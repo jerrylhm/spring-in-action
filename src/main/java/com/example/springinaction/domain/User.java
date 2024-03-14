@@ -9,6 +9,8 @@ import lombok.Data;
 @Data
 public class User {
 
+    private Long id;
+
     @NotBlank(message = "名字都没玩尼玛")
     private String name;
 

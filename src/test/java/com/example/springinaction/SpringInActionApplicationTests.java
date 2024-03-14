@@ -1,9 +1,6 @@
 package com.example.springinaction;
 
-import com.example.springinaction.domain.User;
-import jakarta.validation.Validation;
-import jakarta.validation.Validator;
-import jakarta.validation.ValidatorFactory;
+import com.example.springinaction.jdbc.JdbcTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,16 +9,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 class SpringInActionApplicationTests {
 
     @Autowired
-    private String hello;
+    private JdbcTest jdbcTest;
 
     @Test
     void contextLoads() {
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        Validator validator = factory.getValidator();
-
-        User user = new User();
-        user.setLove(false);
-        validator.validate(user.getLove());
+        Object o = jdbcTest.useJdbc();
+        System.out.println(o);
     }
 
 }
