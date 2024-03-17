@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.security.Principal;
 
 @RestController
-public class TestRestController {
+@Profile("dev")
+public class DevRestController {
 
-    @RequestMapping("/play")
-    public String play(Principal principal) {
-        return principal.getName();
+    @RequestMapping("/dev")
+    public Object dev(@AuthenticationPrincipal User user) {
+        return user;
     }
 
 }

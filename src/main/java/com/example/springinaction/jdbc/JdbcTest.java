@@ -1,6 +1,6 @@
 package com.example.springinaction.jdbc;
 
-import com.example.springinaction.domain.User;
+import com.example.springinaction.jpa.entity.Ingredient;
 import com.mysql.cj.jdbc.MysqlDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -43,7 +43,7 @@ public class JdbcTest {
     private JdbcTemplate jdbc;
 
     public Object useJdbc() {
-        List<User> user = jdbc.query("SELECT id, name FROM user", new BeanPropertyRowMapper<>(User.class));
+        List<Ingredient> user = jdbc.query("SELECT * FROM ingredient", new BeanPropertyRowMapper<>(Ingredient.class));
         return user;
     }
 
